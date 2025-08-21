@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilac Automation | Automate Your Growth</title>
+    
+    <meta name="description" content="Lilac Automation helps businesses automate lead generation and internal operations with custom AI systems. Scale smarter, not harder.">
+    <meta name="keywords" content="automation, ai, lead generation, business operations, saas">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪻</text></svg>">
+
+    <style>
+        /* ------------------------- */
+        /* --- CSS STYLESHEET --- */
+        /* ------------------------- */
+
+        /* --- 1. Root Variables & Global Styles --- */
+        :root {
+            /* Color Palette (Dark Theme Default) */
+            --bg-color: #0A192F; /* Navy */
+            --primary-text-color: #CCD6F6;
+            --heading-color: #E6F1FF;
+            --accent-color: #64FFDA; /* Neon Green */
+            --card-bg-color: #112240; /* Lighter Navy */
+            --border-color: #233554;
+            --shadow-color: rgba(2, 12, 27, 0.7);
+
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+
+            /* Transitions */
+            --transition-speed: 0.3s ease;
+        }
+
+        html.light-theme {
+            --bg-color: #f5f7fa;
+            --primary-text-color: #555;
+            --heading-color: #0A192F;
+            --accent-color: #5d3eff; /* Switched for better contrast in light mode */
+            --card-bg-color: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(100, 100, 111, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 3rem; line-height: 1.2; }
+        h2 { font-size: 2.25rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+
+        p { margin-bottom: 15px; }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            border-radius: 5px;
+            border: 2px solid var(--accent-color);
+            transition: all var(--transition-speed);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        /* --- 2. Header & Navigation --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        html.light-theme .main-header {
+             background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+        .logo .accent {
+            color: var(--accent-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+        }
+
+        .main-nav a {
+            color: var(--primary-text-color);
+            font-weight: 600;
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle, .nav-toggle {
+            background: none;
+            border: none;
+            color: var(--heading-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        .nav-toggle { display: none; }
+
+        /* --- 3. Hero Section --- */
+        #hero {
+            padding-top: 200px;
+            padding-bottom: 150px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-content .subheadline {
+            font-size: 1.25rem;
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        /* --- 4. Features/Services Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 25px var(--shadow-color);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px var(--shadow-color);
+        }
+        
+        .feature-card .icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--heading-color);
+        }
+        
+        /* --- 5. Process Section --- */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: -1;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 30%;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--card-bg-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            border: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        /* --- 6. Contact Section --- */
+        #contact {
+            background-color: var(--card-bg-color);
+            padding: 80px 0;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            color: var(--primary-text-color);
+            font-family: var(--font-body);
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Calendly container styling */
+        .calendly-widget-container {
+            position: relative;
+            min-height: 700px;
+        }
+
+        /* Calendly loading indicator */
+        .calendly-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+            color: var(--primary-text-color);
+            font-size: 1.2rem;
+        }
+
+        /* --- 7. Footer --- */
+        .main-footer {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* --- 8. Helper & Utility Classes --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-speed);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- 9. Responsive Design (Media Queries) --- */
+        @media (max-width: 992px) {
+             h1 { font-size: 2.5rem; }
+             h2 { font-size: 2rem; }
+             .process-steps::before { left: 5%; right: 5%; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            section { padding: 60px 0; }
+            #hero { padding-top: 150px; padding-bottom: 100px; text-align: center; }
+            .hero-content { margin: 0 auto; }
+
+            /* Mobile Navigation */
+            .nav-toggle { display: block; z-index: 1001; }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card-bg-color);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                transition: right 0.4s ease-in-out;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            .main-nav li {
+                margin: 20px 0;
+            }
+
+            /* Process Section */
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+             .process-steps::before { display: none; }
+             .step { max-width: 80%; }
+
+            /* Contact Section */
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">Lilac Automation</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1 class="fade-in">Systems That Grow Your Business On Autopilot</h1>
+                    <p class="subheadline fade-in" style="transition-delay: 100ms;">We audit your processes, eliminate bottlenecks, and automate the systems that drive growth. Get more leads, save operational costs, and deliver exceptional client service while reclaiming hours in your day.</p>
+                    <a href="#contact" class="btn fade-in" style="transition-delay: 200ms;">Book Your Free Strategy Call</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2 class="fade-in">How We Supercharge Your Business</h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Automation Workflows</h3>
+                        <p>We design and build custom workflows that eliminate manual data entry, follow-ups, and other repetitive tasks, freeing up your team to focus on high-value activities.</p>
+                    </div>
+                    <div class="feature-card fade-in" style="transition-delay: 100ms;">
+                        <div class="icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Lead Generation Systems</h3>
+                        <p>Our automated systems capture, nurture, and qualify leads from multiple channels, delivering a consistent stream of sales-ready prospects directly to your pipeline.</p>
+                    </div>
+                    <div class="feature-card fade-in" style="transition-delay: 200ms;">
+                        <div class="icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI Integrations</h3>
+                        <p>Leverage the power of artificial intelligence. We integrate custom AI models and tools like GPT-4 to handle customer support, data analysis, and content creation.</p>
+                    </div>
+                    <div class="feature-card fade-in" style="transition-delay: 300ms;">
+                        <div class="icon"><i class="fas fa-sitemap"></i></div>
+                        <h3>Internal Operations</h3>
+                        <p>From onboarding new hires to managing projects and finances, we streamline your internal processes to improve efficiency, reduce errors, and create a seamless workflow.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <h2 class="fade-in">Your 3-Step Transformation</h2>
+                <div class="process-steps">
+                    <div class="step fade-in">
+                        <div class="step-number">01</div>
+                        <h3>Discovery & Strategy</h3>
+                        <p>We dive deep into your current processes to identify bottlenecks and opportunities for automation. Our strategic audit reveals hidden inefficiencies and quantifies the impact of automation.</p>
+                    </div>
+                    <div class="step fade-in" style="transition-delay: 200ms;">
+                        <div class="step-number">02</div>
+                        <h3>Build & Integrate</h3>
+                        <p>We build your custom automation systems, integrating seamlessly with your existing tools like your CRM, email marketing software, and more.</p>
+                    </div>
+                    <div class="step fade-in" style="transition-delay: 400ms;">
+                        <div class="step-number">03</div>
+                        <h3>Automate & Scale</h3>
+                        <p>We launch, monitor, and optimize your new automated workflows. Watch your efficiency skyrocket and your business scale to new heights on autopilot.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="fade-in">Ready to Automate?</h2>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;" class="fade-in">Fill out the form below or pick a time on our calendar. Let's build your free automation strategy.</p>
+                <div class="contact-wrapper fade-in">
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">How can we help?</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                    <div class="calendly-widget-container">
+                        <div class="calendly-loading">Loading calendar...</div>
+                        <div id="calendly-inline-widget" style="min-width:320px;height:700px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Lilac Automation. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+    /* ----------------------------- */
+    /* --- JAVASCRIPT LOGIC --- */
+    /* ----------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- 1. Element Selectors ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const navToggle = document.getElementById('nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const backToTopButton = document.getElementById('back-to-top');
+        const animatedElements = document.querySelectorAll('.fade-in');
+        
+        // --- 2. Theme Switcher ---
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.className = currentTheme === 'dark' ? 'dark-theme' : 'light-theme';
+        themeToggle.innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark-theme');
+            document.documentElement.classList.toggle('light-theme', !isDark);
+            
+            const newTheme = isDark ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Sync Calendly theme
+            updateCalendlyTheme();
+        });
+
+        // --- 3. Mobile Navigation ---
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            navToggle.innerHTML = mainNav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile nav when a link is clicked
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // --- 4. Back to Top Button ---
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // --- 5. Scroll-triggered Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: stop observing once it's visible
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => observer.observe(el));
+        
+        // --- 6. Calendly Widget & Theme Sync ---
+        // Replace with your actual Calendly URL
+        const calendlyUrl = 'https://calendly.com/lilacautomation/new-meeting'; 
+        const calendlyContainer = document.getElementById('calendly-inline-widget');
+        const loadingIndicator = document.querySelector('.calendly-loading');
+        let calendlyLoaded = false;
+
+        function getCalendlyThemeOptions() {
+            const isLightTheme = document.documentElement.classList.contains('light-theme');
+            if (isLightTheme) {
+                return {
+                    textColor: '0A192F',
+                    primaryColor: '5d3eff',
+                    backgroundColor: 'ffffff'
+                };
+            } else { // Dark theme
+                return {
+                    textColor: 'CCD6F6',
+                    primaryColor: '64FFDA',
+                    backgroundColor: '0A192F'
+                };
+            }
+        }
+
+        function initCalendly() {
+            // Check if Calendly is available
+            if (typeof window.Calendly === 'undefined') {
+                console.log('Calendly not loaded yet, retrying...');
+                setTimeout(initCalendly, 500);
+                return;
+            }
+
+            try {
+                const options = getCalendlyThemeOptions();
+                window.Calendly.initInlineWidget({
+                    url: `${calendlyUrl}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=${options.backgroundColor}&text_color=${options.textColor}&primary_color=${options.primaryColor}`,
+                    parentElement: calendlyContainer,
+                });
+                
+                // Hide loading indicator once Calendly is initialized
+                if (loadingIndicator) {
+                    loadingIndicator.style.display = 'none';
+                }
+                calendlyLoaded = true;
+                console.log('Calendly initialized successfully');
+            } catch (error) {
+                console.error('Error initializing Calendly:', error);
+                if (loadingIndicator) {
+                    loadingIndicator.textContent = 'Error loading calendar. Please try refreshing the page.';
+                }
+            }
+        }
+        
+        function updateCalendlyTheme() {
+            if (!calendlyLoaded) return;
+            
+            // Remove the old widget to re-initialize it
+            while(calendlyContainer.firstChild){
+                calendly
+
+.removeChild(calendlyContainer.firstChild);
+            }
+            
+            // Show loading indicator again
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'flex';
+            }
+            
+            initCalendly();
+        }
+
+        // Initialize Calendly when the script loads
+        function waitForCalendly() {
+            if (typeof window.Calendly !== 'undefined') {
+                initCalendly();
+            } else {
+                setTimeout(waitForCalendly, 100);
+            }
+        }
+
+        // Start checking for Calendly
+        waitForCalendly();
+    });
+    </script>
+    
+    <!-- Load Calendly script -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+</body>
+</html>
